@@ -1,0 +1,36 @@
+// 色彩
+$color-primary: #FF6B6B;
+$color-secondary: #FFD93D;
+$color-bg: #F8F9FA;
+$color-card: #FFFFFF;
+$color-text-primary: #333333;
+$color-text-secondary: #999999;
+$color-danger: #FF4444;
+$color-success: #4CAF50;
+
+// 字体
+$font-size-xs: 20rpx;
+$font-size-sm: 24rpx;
+$font-size-md: 28rpx;
+$font-size-lg: 32rpx;
+$font-size-xl: 36rpx;
+$font-size-xxl: 44rpx;
+
+// 圆角
+$border-radius-sm: 8rpx;
+$border-radius-md: 16rpx;
+$border-radius-lg: 24rpx;
+
+// 间距
+$spacing-xs: 8rpx;
+$spacing-sm: 16rpx;
+$spacing-md: 24rpx;
+$spacing-lg: 32rpx;
+$spacing-xl: 48rpx;
+
+// 阴影
+$shadow-card: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
+$shadow-button: 0 8rpx 24rpx rgba(255, 107, 107, 0.3);
+
+// 安全区域
+$safe-area-bottom: env(safe-area-inset-bottom);

@@ -1,0 +1,88 @@
+@use '../../styles/variables.scss' as *;
+
+.mine-page {
+  min-height: 100vh;
+  background: $color-bg;
+
+  &__navbar {
+    background: linear-gradient(135deg, $color-primary, #ff8e8e);
+    padding: $spacing-md $spacing-md;
+    padding-top: calc(#{$spacing-md} + env(safe-area-inset-top));
+  }
+
+  &__nav-title {
+    font-size: $font-size-lg;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  &__stats {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, $color-primary, #ff8e8e);
+    margin: 0 $spacing-md;
+    border-radius: $border-radius-lg;
+    padding: $spacing-lg $spacing-md;
+    margin-top: $spacing-md;
+    box-shadow: $shadow-button;
+  }
+
+  &__stat-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__stat-num {
+    font-size: 48rpx;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  &__stat-label {
+    font-size: $font-size-xs;
+    color: rgba(255, 255, 255, 0.85);
+    margin-top: $spacing-xs;
+  }
+
+  &__stat-divider {
+    width: 2rpx;
+    height: 60rpx;
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  &__menu {
+    background: $color-card;
+    margin: $spacing-md;
+    border-radius: $border-radius-md;
+    box-shadow: $shadow-card;
+    overflow: hidden;
+  }
+
+  &__cell {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $spacing-md;
+    border-bottom: 2rpx solid #f5f5f5;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__cell-left {
+    font-size: $font-size-md;
+    color: $color-text-primary;
+  }
+
+  &__cell-right {
+    font-size: $font-size-xs;
+    color: $color-text-secondary;
+  }
+
+  &__safe-bottom {
+    height: calc(env(safe-area-inset-bottom) + 100rpx);
+  }
+}

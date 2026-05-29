@@ -1,0 +1,120 @@
+@use '../../styles/variables.scss' as *;
+
+.favorites-page {
+  min-height: 100vh;
+  background: $color-bg;
+  display: flex;
+  flex-direction: column;
+
+  &__navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, $color-primary, #ff8e8e);
+    padding: $spacing-md $spacing-md;
+    padding-top: calc(#{$spacing-md} + env(safe-area-inset-top));
+  }
+
+  &__back {
+    font-size: $font-size-md;
+    color: #fff;
+  }
+
+  &__nav-title {
+    font-size: $font-size-lg;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  &__nav-placeholder {
+    width: 80rpx;
+  }
+
+  &__list {
+    flex: 1;
+  }
+
+  &__footer {
+    padding: $spacing-md;
+    text-align: center;
+  }
+
+  &__loading {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+  }
+
+  &__end {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+  }
+
+  &__safe-bottom {
+    height: env(safe-area-inset-bottom);
+  }
+}
+
+.favorite-item {
+  display: flex;
+  background: $color-card;
+  margin: $spacing-xs $spacing-md;
+  border-radius: $border-radius-md;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+
+  &__body {
+    flex: 1;
+    padding: $spacing-md;
+    min-width: 0;
+  }
+
+  &__scene {
+    font-size: $font-size-md;
+    font-weight: 500;
+    color: $color-text-primary;
+    display: block;
+  }
+
+  &__style {
+    font-size: $font-size-xs;
+    color: $color-primary;
+    margin-top: $spacing-xs;
+    display: block;
+  }
+
+  &__preview {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    margin-top: $spacing-xs;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__time {
+    font-size: $font-size-xs;
+    color: $color-text-secondary;
+    margin-top: $spacing-sm;
+    display: block;
+  }
+
+  &__heart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 $spacing-md;
+    background: rgba($color-secondary, 0.1);
+  }
+
+  &__heart-icon {
+    font-size: 36rpx;
+  }
+
+  &__heart-text {
+    font-size: $font-size-xs;
+    color: $color-secondary;
+    margin-top: $spacing-xs;
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "miniprogramRoot": "dist/",
+  "projectname": "ai-quarrel",
+  "description": "AI吵架生成器 - 用幽默化解情绪",
+  "appid": "touristappid",
+  "setting": {
+    "urlCheck": false,
+    "es6": false,
+    "enhance": true,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": true,
+    "coverView": true,
+    "nodeModules": true,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "lazyloadPlaceholderEnable": false,
+    "useMultiFrameRuntime": false,
+    "useApiHook": false,
+    "useApiHostProcess": false,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "condition": false
+  },
+  "compileType": "miniprogram",
+  "libVersion": "3.3.4",
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "condition": {},
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  }
+}

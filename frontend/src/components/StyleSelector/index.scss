@@ -1,0 +1,38 @@
+@use '../../styles/variables.scss' as *;
+
+.style-selector {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 $spacing-sm;
+}
+
+.style-card {
+  width: calc(33.33% - #{$spacing-sm});
+  margin: $spacing-xs calc($spacing-sm / 2);
+  padding: $spacing-md $spacing-xs;
+  background: $color-card;
+  border-radius: $border-radius-md;
+  border: 2rpx solid transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+
+  &--active {
+    border-color: $color-primary;
+    transform: scale(1.05);
+    box-shadow: 0 4rpx 12rpx rgba($color-primary, 0.2);
+  }
+
+  &__emoji {
+    font-size: 48rpx;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__label {
+    font-size: $font-size-sm;
+    color: $color-text-primary;
+  }
+}

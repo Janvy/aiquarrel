@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "WebSearch",
+      "Bash(npx taro *)",
+      "Bash(node scripts/generate-icons.js)",
+      "Bash(mvn clean *)",
+      "Bash(java -version)",
+      "Bash(mvn -version)",
+      "Bash(where java *)",
+      "Read(//c/Program Files/**)",
+      "Read(//d/programfile/**)",
+      "Read(//d/software/**)",
+      "Bash(JAVA_HOME=\"D:\\\\programfile\\\\jdk\\\\jdk21\" mvn clean package)",
+      "Bash(find \"C:/Users/31788/.m2/repository/com/openai\" -name \"*.jar\" 2>/dev/null | head -5)",
+      "Read(//c/Users/31788/.m2/repository/com/**)",
+      "Bash(JAVA_HOME=\"D:\\\\programfile\\\\jdk\\\\jdk21\" mvn dependency:copy-dependencies -DoutputDirectory=target/deps)",
+      "Bash(jar tf *)",
+      "Bash(javap -cp openai-java-client-okhttp-0.8.0.jar com.openai.client.okhttp.OpenAIOkHttpClient)",
+      "Bash(javap -cp openai-java-core-0.8.0.jar com.openai.client.OpenAIClient)",
+      "Bash(javap -cp openai-java-core-0.8.0.jar com.openai.models.ChatCompletionSystemMessageParam)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" --connect-timeout 5 http://localhost:9080/api/v1/usage -H \"X-Device-Id: test-qa-device-001\")"
+    ]
+  }
+}

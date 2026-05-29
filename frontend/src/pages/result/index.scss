@@ -1,0 +1,138 @@
+@use '../../styles/variables.scss' as *;
+
+.result-page {
+  min-height: 100vh;
+  background: $color-bg;
+
+  &__navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(135deg, $color-primary, #ff8e8e);
+    padding: $spacing-md $spacing-md;
+    padding-top: calc(#{$spacing-md} + env(safe-area-inset-top));
+  }
+
+  &__back {
+    font-size: $font-size-md;
+    color: #fff;
+  }
+
+  &__nav-title {
+    font-size: $font-size-lg;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  &__nav-placeholder {
+    width: 80rpx;
+  }
+
+  &__tabs {
+    display: flex;
+    background: $color-card;
+    padding: $spacing-sm 0;
+    border-bottom: 2rpx solid #eee;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  &__tab {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: $spacing-xs 0;
+    position: relative;
+    transition: color 0.2s;
+
+    &--active {
+      color: $color-primary;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -#{$spacing-sm};
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40rpx;
+        height: 4rpx;
+        background: $color-primary;
+        border-radius: 2rpx;
+      }
+    }
+  }
+
+  &__tab-emoji {
+    font-size: 36rpx;
+  }
+
+  &__tab-label {
+    font-size: $font-size-xs;
+    margin-top: 2rpx;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-around;
+    padding: $spacing-md;
+  }
+
+  &__action-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: $color-card;
+    border: none;
+    border-radius: $border-radius-md;
+    padding: $spacing-sm $spacing-lg;
+    box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+    margin: 0;
+
+    &::after {
+      border: none;
+    }
+  }
+
+  &__action-icon {
+    font-size: 40rpx;
+  }
+
+  &__action-text {
+    font-size: $font-size-xs;
+    color: $color-text-secondary;
+    margin-top: $spacing-xs;
+  }
+
+  &__share-area {
+    padding: 0 $spacing-md;
+  }
+
+  &__share-btn {
+    width: 100%;
+    background: transparent;
+    border: 2rpx solid $color-primary;
+    border-radius: $border-radius-md;
+    color: $color-primary;
+    font-size: $font-size-md;
+    padding: $spacing-sm 0;
+    margin: 0;
+
+    &::after {
+      border: none;
+    }
+  }
+
+  &__share-canvas {
+    position: fixed;
+    left: -9999rpx;
+    top: 0;
+    width: 750rpx;
+    height: 940rpx;
+  }
+
+  &__safe-bottom {
+    height: calc(env(safe-area-inset-bottom) + 40rpx);
+  }
+}

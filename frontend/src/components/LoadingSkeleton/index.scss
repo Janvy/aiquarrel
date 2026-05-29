@@ -1,0 +1,63 @@
+@use '../../styles/variables.scss' as *;
+
+.skeleton-animate {
+  background: linear-gradient(90deg, #eee 25%, #f5f5f5 50%, #eee 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+  border-radius: $border-radius-sm;
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.skeleton-card {
+  padding: $spacing-md;
+
+  &__block {
+    height: 400rpx;
+    border-radius: $border-radius-lg;
+  }
+}
+
+.skeleton-list {
+  padding: $spacing-md;
+
+  &__item {
+    background: $color-card;
+    border-radius: $border-radius-md;
+    padding: $spacing-md;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__title {
+    height: 36rpx;
+    width: 60%;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__desc {
+    height: 28rpx;
+    width: 90%;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__time {
+    height: 24rpx;
+    width: 40%;
+  }
+}
+
+.skeleton-text {
+  padding: 0;
+
+  &__line {
+    height: 32rpx;
+    margin-bottom: $spacing-sm;
+  }
+}

@@ -1,0 +1,65 @@
+@use '../../styles/variables.scss' as *;
+
+.history-item-wrapper {
+  position: relative;
+  overflow: hidden;
+  margin: $spacing-xs $spacing-md;
+}
+
+.history-item {
+  background: $color-card;
+  border-radius: $border-radius-md;
+  padding: $spacing-md;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+
+  &__scene {
+    font-size: $font-size-md;
+    font-weight: 500;
+    color: $color-text-primary;
+    display: block;
+  }
+
+  &__style {
+    font-size: $font-size-xs;
+    color: $color-primary;
+    margin-top: $spacing-xs;
+    display: block;
+  }
+
+  &__preview {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    margin-top: $spacing-xs;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__time {
+    font-size: $font-size-xs;
+    color: $color-text-secondary;
+    margin-top: $spacing-sm;
+    display: block;
+  }
+
+  &__delete {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 120rpx;
+    background: $color-danger;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(120rpx);
+    transition: transform 0.3s ease;
+    border-radius: 0 $border-radius-md $border-radius-md 0;
+  }
+
+  &__delete-text {
+    color: #fff;
+    font-size: $font-size-md;
+  }
+}
