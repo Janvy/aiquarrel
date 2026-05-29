@@ -65,7 +65,7 @@
         <dependency>
             <groupId>com.openai</groupId>
             <artifactId>openai-java</artifactId>
-            <version>0.8.0</version>
+            <version>0.44.2</version>
         </dependency>
 
         <!-- Lombok -->

@@ -5,12 +5,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class PromptBuilder {
 
-    public String buildUserPrompt(String scene, String style) {
+    public String buildSystemPrompt(String style) {
         String stylePrompt = PromptTemplate.getStylePrompt(style);
-        return String.format("场景：%s\n风格要求：%s\n请根据以上场景和风格，生成一段怼人话术：", scene, stylePrompt);
+        return PromptTemplate.SYSTEM_PROMPT + "\n\n" + stylePrompt;
     }
 
-    public String getSystemPrompt() {
-        return PromptTemplate.SYSTEM_PROMPT;
+    public String buildUserPrompt(String scene) {
+        return "场景：" + scene + "\n请直接输出话术：";
     }
 }
