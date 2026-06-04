@@ -7,9 +7,10 @@ interface ResultCardProps {
   styleLabel: string;
   styleEmoji: string;
   loading?: boolean;
+  onCopy?: () => void;
 }
 
-export default function ResultCard({ content, styleLabel, styleEmoji, loading }: ResultCardProps) {
+export default function ResultCard({ content, styleLabel, styleEmoji, loading, onCopy }: ResultCardProps) {
   if (loading) {
     return (
       <View className="result-card result-card--loading">
@@ -19,7 +20,7 @@ export default function ResultCard({ content, styleLabel, styleEmoji, loading }:
   }
 
   return (
-    <View className="result-card">
+    <View className="result-card" onClick={onCopy}>
       <Text className="result-card__content">{content}</Text>
       <View className="result-card__tag">
         <Text className="result-card__tag-emoji">{styleEmoji}</Text>

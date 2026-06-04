@@ -88,7 +88,7 @@ export function drawShareCard(
   let cy = CARD_Y + PAD;
 
   // 3. 品牌名
-  const brandText = '🎯 AI吵架生成器';
+  const brandText = '🎯 AI怼人神器';
   ctx.fillStyle = '#FF6B6B';
   ctx.font = 'bold 28px sans-serif';
   ctx.textAlign = 'center';
@@ -169,5 +169,5 @@ export function drawShareCard(
   ctx.fillStyle = 'rgba(255,255,255,0.7)';
   ctx.font = '20px sans-serif';
   ctx.textAlign = 'center';
-  ctx.fillText('AI吵架生成器 · 用幽默化解情绪', W / 2, H - 20);
+  ctx.fillText('AI怼人神器 · 用幽默化解情绪', W / 2, H - 20);
 }

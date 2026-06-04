@@ -3,7 +3,7 @@ import { View, Text, ScrollView } from '@tarojs/components';
 import Taro, { useDidShow } from '@tarojs/taro';
 import EmptyState from '../../components/EmptyState';
 import LoadingSkeleton from '../../components/LoadingSkeleton';
-import { PAGE_SIZE } from '../../utils/constants';
+import { PAGE_SIZE, formatDate } from '../../utils/constants';
 import { getHistory, deleteHistory, clearHistory, HistoryItem as HistoryItemType } from '../../utils/api';
 import './index.scss';
 
@@ -176,9 +176,10 @@ export default function History() {
                   {item.style === 'crazy' && '🤪'}
                   {item.style === 'literary' && '📝'}
                   {item.style === 'bossy' && '🕶️'}
+                  {item.style === 'irritable' && '😤'}
                   {' '}{item.styleName}
                 </Text>
-                <Text className="history-item-content__time">{item.createdAt}</Text>
+                <Text className="history-item-content__time">{formatDate(item.createdAt)}</Text>
               </View>
               <Text className="history-item-content__preview">{item.contentPreview}</Text>
             </View>

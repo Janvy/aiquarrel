@@ -6,28 +6,22 @@ spring:
     name: ai-quarrel
 
   datasource:
-    url: jdbc:mysql://localhost:3308/aiquarrel?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
-    username: ${MYSQL_USER:root}
-    password: ${MYSQL_PASSWORD:123456}
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    hikari:
-      maximum-pool-size: 20
-      minimum-idle: 5
-      connection-timeout: 3000
-      idle-timeout: 600000
-      max-lifetime: 1800000
+    url: jdbc:h2:file:./data/aiquarrel;MODE=MySQL;DATABASE_TO_LOWER=TRUE
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
 
-  data:
-    redis:
-      host: ${REDIS_HOST:localhost}
-      port: ${REDIS_PORT:6379}
-      password: ${REDIS_PASSWORD:}
-      timeout: 3000ms
-      lettuce:
-        pool:
-          max-active: 20
-          max-idle: 10
-          min-idle: 5
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
+      data-locations: classpath:data.sql
+      continue-on-error: true
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
 
   jackson:
     date-format: yyyy-MM-dd'T'HH:mm:ss'Z'
@@ -51,14 +45,14 @@ ai:
     base-url: https://api.deepseek.com
     model: deepseek-v4-pro
     timeout: 10000
-    max-tokens: 200
+    max-tokens: 512
     temperature: 1.2
 
 app:
   rate-limit:
     device-qps: 10
     ip-qps: 5
-    daily-limit: 50
+    daily-limit: 5
   content:
     max-scene-length: 200
     content-preview-length: 30

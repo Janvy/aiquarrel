@@ -1,7 +1,7 @@
 {
   "name": "ai-quarrel",
   "version": "1.0.0",
-  "description": "AI吵架生成器 - 微信小程序",
+  "description": "AI怼人神器 - 微信小程序",
   "templateInfo": {
     "name": "default",
     "typescript": true,

@@ -8,7 +8,8 @@ public enum StyleEnum {
     PASSIVE_AGGRESSIVE("passive_aggressive", "阴阳怪气版"),
     CRAZY("crazy", "发疯文学版"),
     LITERARY("literary", "文艺版"),
-    BOSSY("bossy", "霸总版");
+    BOSSY("bossy", "霸总版"),
+    IRRITABLE("irritable", "暴躁型");
 
     private final String code;
     private final String name;

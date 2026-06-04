@@ -9,7 +9,7 @@ export default defineAppConfig({
   window: {
     backgroundTextStyle: 'light',
     navigationBarBackgroundColor: '#FF6B6B',
-    navigationBarTitleText: 'AI吵架生成器',
+    navigationBarTitleText: 'AI怼人神器',
     navigationBarTextStyle: 'white',
   },
   tabBar: {

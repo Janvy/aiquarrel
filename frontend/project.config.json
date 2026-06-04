@@ -1,8 +1,8 @@
 {
   "miniprogramRoot": "dist/",
   "projectname": "ai-quarrel",
-  "description": "AI吵架生成器 - 用幽默化解情绪",
-  "appid": "touristappid",
+  "description": "AI怼人神器 - 用幽默化解情绪",
+  "appid": "wx6ef9d038b7a8ff03",
   "setting": {
     "urlCheck": false,
     "es6": false,

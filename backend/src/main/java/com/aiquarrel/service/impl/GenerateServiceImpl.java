@@ -6,17 +6,16 @@ import com.aiquarrel.model.dto.GenerateRequest;
 import com.aiquarrel.model.dto.GenerateResponse;
 import com.aiquarrel.model.entity.DeviceInfo;
 import com.aiquarrel.model.entity.GenerationRecord;
-import com.aiquarrel.model.enums.StyleEnum;
 import com.aiquarrel.model.mapper.DeviceMapper;
 import com.aiquarrel.model.mapper.GenerationMapper;
 import com.aiquarrel.security.ContentFilter;
 import com.aiquarrel.service.GenerateService;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
+import com.github.benmanes.caffeine.cache.Cache;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,6 +23,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
 @RequiredArgsConstructor
@@ -34,13 +34,11 @@ public class GenerateServiceImpl implements GenerateService {
     private final ContentFilter contentFilter;
     private final GenerationMapper generationMapper;
     private final DeviceMapper deviceMapper;
-    private final RedisTemplate<String, Object> redisTemplate;
+    private final Cache<String, AtomicInteger> dailyCountCache;
+    private final Cache<String, GenerateResponse> genRecordCache;
 
     @Value("${app.rate-limit.daily-limit:50}")
     private int dailyLimit;
-
-    @Value("${app.content.max-scene-length:200}")
-    private int maxSceneLength;
 
     @Override
     @Transactional
@@ -57,13 +55,12 @@ public class GenerateServiceImpl implements GenerateService {
             throw new BizException(40002, "风格参数无效");
         }
 
-        // 校验每日限额
-        String dailyKey = "daily:" + deviceId + ":" + LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
-        Long dailyCount = redisTemplate.opsForValue().increment(dailyKey);
-        if (dailyCount != null && dailyCount == 1) {
-            redisTemplate.expire(dailyKey, 48, java.util.concurrent.TimeUnit.HOURS);
-        }
-        if (dailyCount != null && dailyCount > dailyLimit) {
+        // 仅读取当前计数做超限检查，不自增（避免失败请求白扣次数）
+        String today = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+        String dailyKey = deviceId + ":" + today;
+        AtomicInteger dailyCount = dailyCountCache.getIfPresent(dailyKey);
+        int currentCount = dailyCount != null ? dailyCount.get() : 0;
+        if (currentCount >= dailyLimit) {
             throw new BizException(42901, "今日生成次数已达上限，明天再来试试吧");
         }
 
@@ -90,14 +87,18 @@ public class GenerateServiceImpl implements GenerateService {
             content = filteredContent != null ? filteredContent : "这个问题有点难，换个说法试试？";
         }
 
-        // 生成ID
-        String today = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
-        String seqKey = "gen:seq:" + today;
-        Long seq = redisTemplate.opsForValue().increment(seqKey);
-        if (seq != null && seq == 1) {
-            redisTemplate.expire(seqKey, 48, java.util.concurrent.TimeUnit.HOURS);
+        // === 生成成功后，才扣减次数 ===
+        if (dailyCount == null) {
+            dailyCount = new AtomicInteger(1);
+            dailyCountCache.put(dailyKey, dailyCount);
+        } else {
+            dailyCount.incrementAndGet();
         }
-        String recordId = String.format("gen_%s_%06d", today, seq != null ? seq : 1);
+
+        // 生成ID
+        String datePrefix = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+        long timestamp = System.currentTimeMillis() % 1000000;
+        String recordId = String.format("gen_%s_%06d", datePrefix, timestamp);
 
         // 持久化
         GenerationRecord record = new GenerationRecord();
@@ -114,12 +115,11 @@ public class GenerateServiceImpl implements GenerateService {
         // 更新设备计数
         upsertDeviceCount(deviceId);
 
-        // 缓存
-        String cacheKey = "gen:" + recordId;
-        redisTemplate.opsForHash().putAll(cacheKey, new java.util.HashMap<>());
-        redisTemplate.expire(cacheKey, 30, java.util.concurrent.TimeUnit.MINUTES);
+        // 写入缓存
+        GenerateResponse response = buildResponse(record);
+        genRecordCache.put(recordId, response);
 
-        return buildResponse(record);
+        return response;
     }
 
     private void upsertDeviceCount(String deviceId) {

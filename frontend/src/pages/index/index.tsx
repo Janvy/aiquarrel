@@ -56,7 +56,7 @@ export default function Index() {
   return (
     <View className="index-page">
       <View className="index-page__header">
-        <Text className="index-page__title">🎯 AI吵架生成器</Text>
+        <Text className="index-page__title">🎯 AI怼人神器</Text>
         <Text className="index-page__subtitle">用幽默化解情绪，把憋屈变成精彩</Text>
       </View>
 
@@ -98,6 +98,7 @@ export default function Index() {
           className={`index-page__btn ${loading ? 'index-page__btn--loading' : ''}`}
           onClick={handleGenerate}
         >
+          {loading && <View className="index-page__btn-spinner" />}
           <Text className="index-page__btn-text">
             {loading ? '正在酝酿怼人话术...' : '😈 生成怼人话术'}
           </Text>

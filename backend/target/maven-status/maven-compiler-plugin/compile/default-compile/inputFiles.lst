@@ -8,6 +8,7 @@ D:\githubworkspace\aiquarrel\backend\src\main\java\com\aiquarrel\model\dto\Gener
 D:\githubworkspace\aiquarrel\backend\src\main\java\com\aiquarrel\service\GenerateService.java
 D:\githubworkspace\aiquarrel\backend\src\main\java\com\aiquarrel\exception\GlobalExceptionHandler.java
 D:\githubworkspace\aiquarrel\backend\src\main\java\com\aiquarrel\model\mapper\FavoriteMapper.java
+D:\githubworkspace\aiquarrel\backend\src\main\java\com\aiquarrel\config\CacheConfig.java
 D:\githubworkspace\aiquarrel\backend\src\main\java\com\aiquarrel\config\OpenAiConfig.java
 D:\githubworkspace\aiquarrel\backend\src\main\java\com\aiquarrel\service\ShareImageService.java
 D:\githubworkspace\aiquarrel\backend\src\main\java\com\aiquarrel\model\entity\FavoriteRecord.java
@@ -30,7 +31,6 @@ D:\githubworkspace\aiquarrel\backend\src\main\java\com\aiquarrel\service\impl\Hi
 D:\githubworkspace\aiquarrel\backend\src\main\java\com\aiquarrel\service\impl\RecordServiceImpl.java
 D:\githubworkspace\aiquarrel\backend\src\main\java\com\aiquarrel\model\dto\UsageResponse.java
 D:\githubworkspace\aiquarrel\backend\src\main\java\com\aiquarrel\model\dto\ApiResponse.java
-D:\githubworkspace\aiquarrel\backend\src\main\java\com\aiquarrel\config\RedisConfig.java
 D:\githubworkspace\aiquarrel\backend\src\main\java\com\aiquarrel\model\dto\GenerateRequest.java
 D:\githubworkspace\aiquarrel\backend\src\main\java\com\aiquarrel\model\dto\FavoriteResponse.java
 D:\githubworkspace\aiquarrel\backend\src\main\java\com\aiquarrel\interceptor\DeviceIdInterceptor.java

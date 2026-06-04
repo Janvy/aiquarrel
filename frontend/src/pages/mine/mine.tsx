@@ -28,7 +28,7 @@ export default function Mine() {
   const handleAbout = () => {
     Taro.showModal({
       title: '关于我们',
-      content: 'AI吵架生成器 v1.0.0\n\n用幽默化解情绪，把负面情绪变成趣味内容。\n\n选择场景和风格，AI 帮你生成高情商、阴阳怪气、发疯文学等风格的精彩回怼文案。',
+      content: 'AI怼人神器 v1.0.0\n\n用幽默化解情绪，把负面情绪变成趣味内容。\n\n选择场景和风格，AI 帮你生成高情商、阴阳怪气、发疯文学等风格的精彩回怼文案。',
       showCancel: false,
       confirmText: '知道了',
     });

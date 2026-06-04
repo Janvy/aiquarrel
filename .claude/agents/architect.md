@@ -34,8 +34,8 @@
 | 后端 | SpringBoot | 3.x |
 | JDK | Java 开发运行时 | >= 17（建议 21 LTS） |
 | ORM | MyBatis / MyBatis Plus | — |
-| 数据库 | MySQL | 8.0 |
-| 缓存 | Redis | 7.x |
+| 数据库 | H2（MySQL 兼容模式，嵌入式，V1 单节点轻量方案）| 2.x |
+| 缓存 | Caffeine（本地内存缓存，V1 单节点替代 Redis）| 3.x |
 | AI | DeepSeek API（OpenAI 兼容协议）| — |
 | 反向代理 | Nginx | 1.25+ |
 | 容器化 | Docker + Docker Compose | — |
@@ -60,7 +60,7 @@
 ## 1. 技术架构图
 
 - 用 ASCII 字符绘制完整架构图
-- 覆盖层级：小程序 → Nginx → SpringBoot → MySQL/Redis/DeepSeek API
+- 覆盖层级：小程序 → Nginx → SpringBoot → H2嵌入式/Caffeine本地缓存/DeepSeek API
 - 标注关键中间件、过滤器链、数据流向
 - 附部署拓扑（Docker 容器关系）
 
@@ -90,7 +90,7 @@
   - `t_device` — 设备信息（含每日/累计计数）
   - `t_sensitive_word` — 敏感词库（含拦截级别）
 - 索引策略说明：每个索引覆盖的查询场景
-- Redis 数据结构设计：Key 命名规范、类型、TTL、用途
+- 缓存数据结构设计：Caffeine 本地缓存 Key 命名规范、实例规划、TTL、用途（V1 单节点，后续升级多节点时引入 Redis）
 
 # 设计原则
 

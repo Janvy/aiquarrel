@@ -83,9 +83,9 @@ export async function request<T>(path: string, options: {
 | 42901 | 今日生成次数已达上限 | 当日计数 ≥ 50 | Toast "今日生成次数已用完，明天再来吧" + 按钮置灰 |
 | 42902 | 请求频率过高 | 设备/IP 级 QPS 超限 | Toast message，延迟 1s 可重试 |
 | 50001 | AI 服务异常 | DeepSeek API 超时/异常 | Toast "AI正在开小差，请稍后再试" |
-| 50002 | 数据库异常 | MySQL 连接/写入失败 | Toast "服务异常，请稍后再试" |
+| 50002 | 数据库异常 | H2 写入失败/文件损坏 | Toast "服务异常，请稍后再试" |
 | 50003 | 图片生成失败 | CDN 上传异常 | Toast "图片生成失败，请重试" |
-| 50004 | Redis 不可用 | Redis 连接失败 | 后端自动降级，前端无感 |
+| 50004 | 缓存不可用 | 本地缓存异常 | 后端降级到 MySQL 直接读写，前端无感 |
 
 ---
 
@@ -99,6 +99,7 @@ export const STYLES = [
   { value: 'crazy',               label: '发疯文学', emoji: '🤪' },
   { value: 'literary',            label: '文艺',     emoji: '📝' },
   { value: 'bossy',               label: '霸总',     emoji: '🕶️' },
+  { value: 'irritable',           label: '暴躁型',   emoji: '😤' },
 ] as const;
 
 export type StyleValue = typeof STYLES[number]['value'];

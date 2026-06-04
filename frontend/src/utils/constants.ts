@@ -10,6 +10,7 @@ export const STYLES: Style[] = [
   { value: 'crazy', label: '发疯文学', emoji: '🤪' },
   { value: 'literary', label: '文艺', emoji: '📝' },
   { value: 'bossy', label: '霸总', emoji: '🕶️' },
+  { value: 'irritable', label: '暴躁', emoji: '😤' },
 ];
 
 export const STYLE_MAP: Record<string, string> = {};
@@ -37,3 +38,10 @@ export const DEBOUNCE_GENERATE = 2000;
 export const DEBOUNCE_FAVORITE = 500;
 
 export const SWIPE_THRESHOLD = 60;
+
+export function formatDate(iso: string): string {
+  const d = new Date(iso);
+  if (isNaN(d.getTime())) return iso;
+  const pad = (n: number) => String(n).padStart(2, '0');
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+}

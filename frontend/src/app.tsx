@@ -4,7 +4,7 @@ import './app.scss';
 
 function App({ children }: PropsWithChildren<object>) {
   useLaunch(() => {
-    console.log('AI吵架生成器 启动');
+    console.log('AI怼人神器 启动');
   });
 
   return children;

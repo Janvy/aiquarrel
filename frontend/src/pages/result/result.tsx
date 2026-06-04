@@ -208,6 +208,7 @@ export default function Result() {
         styleLabel={currentStyleInfo?.label || ''}
         styleEmoji={currentStyleInfo?.emoji || ''}
         loading={styleLoading}
+        onCopy={handleCopy}
       />
 
       <View className="result-page__actions">

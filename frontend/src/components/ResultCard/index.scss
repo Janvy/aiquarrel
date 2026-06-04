@@ -6,6 +6,11 @@
   padding: $spacing-lg;
   margin: $spacing-md;
   box-shadow: $shadow-card;
+  transition: background 0.15s;
+
+  &:active {
+    background: #f0f0f0;
+  }
 
   &--loading {
     min-height: 400rpx;

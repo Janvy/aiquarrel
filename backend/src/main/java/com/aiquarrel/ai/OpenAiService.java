@@ -19,7 +19,7 @@ public class OpenAiService {
     @Value("${ai.deepseek.model}")
     private String model;
 
-    @Value("${ai.deepseek.max-tokens:200}")
+    @Value("${ai.deepseek.max-tokens:512}")
     private int maxTokens;
 
     @Value("${ai.deepseek.temperature:1.2}")
@@ -33,13 +33,14 @@ public class OpenAiService {
         String userPrompt = promptBuilder.buildUserPrompt(scene);
         ChatCompletionCreateParams params = buildCompletionParams(systemPrompt, userPrompt);
 
-        log.info("调用DeepSeek API: scene={}, style={}", scene, style);
+        log.info("调用DeepSeek API: scene={}, style={}, maxTokens={}", scene, style, maxTokens);
         ChatCompletion completion = client.chat().completions().create(params);
 
-        String content = completion.choices().get(0).message().content()
+        var choice = completion.choices().get(0);
+        String content = choice.message().content()
                 .orElse("这个问题有点难，换个说法试试？");
 
-        log.info("DeepSeek API返回: length={}", content.length());
+        log.info("DeepSeek API返回: length={}, finishReason={}", content.length(), choice.finishReason());
         return content.trim();
     }
 

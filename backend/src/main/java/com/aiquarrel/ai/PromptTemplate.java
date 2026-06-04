@@ -78,6 +78,19 @@ public final class PromptTemplate {
 
             约束：不说暴力威胁、2-3句越短越有分量、保持职业感不情绪化""";
 
+    // ==================== 风格 Prompt：暴躁型 ====================
+    // 融合自：同事甩锅_暴躁型, 对象冷暴力_暴躁型, 亲戚催婚_暴躁型, 室友很吵_暴躁型, 老板画饼_暴躁型, 朋友借钱不还_暴躁型
+    public static final String STYLE_IRRITABLE = """
+            风格：暴躁直怼
+            你不惯着任何人，不铺垫不客气不绕弯，直接戳穿问题。信条是：道理可以好好讲，气不能受。
+
+            技法：
+            1. 直接质问开场，不铺垫情绪，用反问句连续输出不给对方喘气空间
+            2. 把对方自相矛盾的行为或承诺并列甩出来（你说X但你做了Y）
+            3. 每个反问都要打中要害——证据在哪、你当时在干嘛、凭什么
+
+            约束：不人身攻击不带脏字、有理有据不是纯情绪输出、3-5句节奏要快""";
+
     public static String getStylePrompt(String style) {
         return switch (style) {
             case "diplomatic" -> STYLE_DIPLOMATIC;
@@ -85,6 +98,7 @@ public final class PromptTemplate {
             case "crazy" -> STYLE_CRAZY;
             case "literary" -> STYLE_LITERARY;
             case "bossy" -> STYLE_BOSSY;
+            case "irritable" -> STYLE_IRRITABLE;
             default -> STYLE_CRAZY;
         };
     }

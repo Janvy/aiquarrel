@@ -3,7 +3,7 @@ import { View, Text, ScrollView } from '@tarojs/components';
 import Taro, { useDidShow } from '@tarojs/taro';
 import EmptyState from '../../components/EmptyState';
 import LoadingSkeleton from '../../components/LoadingSkeleton';
-import { PAGE_SIZE, DEBOUNCE_FAVORITE } from '../../utils/constants';
+import { PAGE_SIZE, DEBOUNCE_FAVORITE, formatDate } from '../../utils/constants';
 import { getFavorites, toggleFavorite, HistoryItem as HistoryItemType } from '../../utils/api';
 import './index.scss';
 
@@ -141,10 +141,11 @@ export default function Favorites() {
                 {item.style === 'crazy' && '🤪'}
                 {item.style === 'literary' && '📝'}
                 {item.style === 'bossy' && '🕶️'}
+                {item.style === 'irritable' && '😤'}
                 {' '}{item.styleName}
               </Text>
               <Text className="favorite-item__preview">{item.contentPreview}</Text>
-              <Text className="favorite-item__time">{item.createdAt}</Text>
+              <Text className="favorite-item__time">{formatDate(item.createdAt)}</Text>
             </View>
             <View className="favorite-item__heart" onClick={(e) => {
               e.stopPropagation();
