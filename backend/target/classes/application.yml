@@ -28,6 +28,23 @@ spring:
     time-zone: Asia/Shanghai
     default-property-inclusion: non_null
 
+# Actuator 健康检测配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: always
+      show-components: always
+  health:
+    db:
+      enabled: true
+    diskspace:
+      enabled: true
+
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true

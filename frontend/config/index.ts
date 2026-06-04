@@ -25,7 +25,7 @@ export default defineConfig<'webpack5'>(async (merge) => {
       __API_BASE_URL__: JSON.stringify(
         isDev
           ? 'http://localhost:9080/api/v1'
-          : 'https://api.aiquarrel.com/api/v1'
+          : 'https://jwcloud.top/aiquarrel/api/v1'
       ),
     },
     copy: {

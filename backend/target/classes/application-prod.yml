@@ -4,6 +4,16 @@ spring:
     username: sa
     password:
 
+# 生产环境 Actuator：仅暴露 health，不展示详情
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never
+
 ai:
   deepseek:
     api-key: ${DEEPSEEK_API_KEY}

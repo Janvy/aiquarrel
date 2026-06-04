@@ -9,6 +9,7 @@
   },
   "scripts": {
     "dev:weapp": "cross-env TARO_APP_API_ENV=dev taro build --type weapp --watch",
+    "prod:weapp": "cross-env TARO_APP_API_ENV=prod taro build --type weapp --watch",
     "build:weapp:dev": "cross-env TARO_APP_API_ENV=dev taro build --type weapp",
     "build:weapp:prod": "cross-env TARO_APP_API_ENV=prod taro build --type weapp",
     "build:weapp": "npm run build:weapp:prod",
